@@ -2,21 +2,22 @@ import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 
 
-const Currency = () => {
+const Currency = (props) => {
     const { currency } = useContext(AppContext);
     const [newcurrency, setnewcurrency] = useState(currency);    
     const handlecurrencyChange = (event) => {
         setnewcurrency(event.target.value);
     }
+
   
     return (
-        <div>
-        <select className="custom-select"  value={newcurrency}  onChange={handlecurrencyChange}>
-                <option defaultValue fontColor="white">Currency (£ Pound)</option>
-                <option value="$" name="$ Dollar" fontSize="20px" fontColor="black" > $ Dollar</option>
-                <option value="£" name="£ Pound" fontSize="20px" fontColor="black">£ Pound</option>
-                <option value="€" name="€ Euro" fontSize="20px" fontColor="black">€ Euro</option>
-                <option value="₹" name="₹ Rupee" fontSize="20px" fontColor="black">₹ Rupee</option>
+        <div >
+        <select className="select-options" style={{background:"lightgreen",paddingLeft:15,height:50,width:230,fontSize:22,border:"transparent"}} value={newcurrency}  onChange={handlecurrencyChange}>    
+                <option className="select-option" value="£" name="£ Pound" style={{display:"none"}}>Currency (£ Pound)</option>
+                <option className="select-option" value="$" name="$ Dollar" > $ Dollar</option>
+                <option className="select-option" value="£" name="£ Pound" >£ Pound</option>
+                <option className="select-option" value="€" name="€ Euro" >€ Euro</option>
+                <option className="select-option" value="₹" name="₹ Rupee" >₹ Rupee</option>
                   </select></div>
 
     );
