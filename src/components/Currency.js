@@ -5,8 +5,8 @@ import { AppContext } from '../context/AppContext';
 const Currency = (props) => {
     const { currency,dispatch } = useContext(AppContext);
     const [newcurrency, setnewcurrency] = useState(currency);    
-    const handlecurrencyChange = (event) => {
-        setnewcurrency(event.target.value);
+    const handlecurrencyChange = (e) => {
+        setnewcurrency(e);
     }
 
     useEffect(() => {
@@ -19,14 +19,18 @@ const Currency = (props) => {
         },[newcurrency,dispatch]) 
   
     return (
-        <div >
-        <select className="custom-select" style={{background:"lightgreen",paddingLeft:15,height:50,width:230,fontSize:22,border:"transparent"}}  onChange={handlecurrencyChange}>    
-                <option  value="£" name="£ Pound" style={{display:"none"}}>Currency (£ Pound)</option>
-                <option  value="$" name="$ Dollar" > $ Dollar</option>
-                <option  value="£" name="£ Pound" >£ Pound</option>
-                <option  value="€" name="€ Euro" >€ Euro</option>
-                <option  value="₹" name="₹ Rupee" >₹ Rupee</option>
-                  </select></div>
+
+        <div className="dropdown">
+        <button className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" style={{background:"lightgreen",border:"transparent"}} value="£" onSelect={handlecurrencyChange}>Currency (£ Pound)
+        <span className="caret"></span></button>
+        <select className="dropdown-menu">
+            <option value="$">$ Dollar</option>
+            <option value="£">£ Pound</option>
+            <option value="€">€ Euro </option>
+            <option value="₹">₹ Rupee</option>
+            </select>
+    </div>
+
 
     );
 };

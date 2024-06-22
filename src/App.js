@@ -1,7 +1,12 @@
 import React from 'react';
 
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import "./selectcustom.css";
+
+//import DropdownButton from 'react-bootstrap/DropdownButton';
+//import Dropdown from 'react-bootstrap/Dropdown'
+
+import "./selectcustom.css";
 //Code to import Budget.js
 import Budget from './components/Budget';
 import Remaining from './components/Remaining';
