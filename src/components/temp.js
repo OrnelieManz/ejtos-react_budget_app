@@ -5,9 +5,13 @@ import { AppContext } from '../context/AppContext';
 const Currency = (props) => {
     const { currency,dispatch } = useContext(AppContext);
     const [newcurrency, setnewcurrency] = useState(currency);    
-    const handlecurrencyChange = (event) => {
+    const [selectedItem,setSelecteditem]=useState('Currency (£ Pound)')
+    
+    const handleselectItem = (event) => {
+        setSelecteditem(event.target.name);
         setnewcurrency(event.target.value);
     }
+    
 
     useEffect(() => {
     
@@ -19,17 +23,17 @@ const Currency = (props) => {
         },[newcurrency,dispatch]) 
   
     return (
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style={{background:"lightgreen",border:"transparent"}} value="£" onSelect={handlecurrencyChange}>Currency (£ Pound)
-            <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-                <li value="$">$ Dollar</li>
-                <li value="£">£ Pound</li>
-                <li value="€">€ Euro</li>
-                <li value="₹">₹ Rupee</li>
-            </ul>
-        </div>
 
+        <div className="dropdown">
+        <button className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" style={{background:"lightgreen",border:"transparent"}} 
+        aria-haspopup="true" aria-expanded="true" >{selectedItem}<span className="caret"></span></button>
+        <ul className="dropdown-menu show"  style={{background:"lightgreen"}}>
+            <li classeName="CurrencyOption"><button style={{background:"lightgreen", border:"transparent"}} id="Dollar" value="$" name="$ Dollar" onClick={handleselectItem}>$ Dollar</button></li>
+            <li classeName="CurrencyOption"><button style={{background:"lightgreen", border:"transparent"}} value="£" name="£ Pound" onClick={handleselectItem}>£ Pound</button></li>
+            <li classeName="CurrencyOption"><button style={{background:"lightgreen", border:"transparent"}} value="€" name="€ Euro" onClick={handleselectItem}>€ Euro </button></li>
+            <li classeName="CurrencyOption"><button style={{background:"lightgreen", border:"transparent"}} value="₹" name="₹ Rupee" onClick={handleselectItem}>₹ Rupee</button></li>
+            </ul>
+    </div>
 
     );
 };

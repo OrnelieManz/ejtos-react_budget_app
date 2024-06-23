@@ -1,10 +1,7 @@
-.show>.dropdown-menu {
-  display: block;
-  position: absolute;
+.CurrencyChoice:hover {
+  cursor: pointer;
+  background-color:white;
 }
-
-
-
 
 
 

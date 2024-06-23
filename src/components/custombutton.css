@@ -10,3 +10,12 @@ padding:0px;
 
 }
 
+.myClickableThingy:hover {
+    cursor: pointer;
+    background-color:white
+}
+
+.show>.dropdown-menu {
+    display: block;
+    position: absolute;
+  }
